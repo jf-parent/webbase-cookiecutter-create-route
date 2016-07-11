@@ -12,7 +12,7 @@ export const DO_SOMETHING_ERROR = 'DO_SOMETHING_ERROR'
 // Actions
 // ====================================
 
-const logger = require('loglevel').getLogger('{{cookiecutter.route_name|title}}')
+const logger = require('loglevel').getLogger('{{cookiecutter.route_name}}')
 logger.setLevel(__LOGLEVEL__)
 
 export function doSomething (data) {
@@ -55,7 +55,7 @@ export const actions = {
 const initialState = {
 }
 
-export default function profile (state = initialState, action) {
+export default function dosomethingreducer (state = initialState, action) {
   switch (action.type) {
     case DOING_SOMETHING:
       return Object.assign({},

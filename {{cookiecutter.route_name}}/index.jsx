@@ -1,7 +1,7 @@
 import { injectReducer } from 'store/reducers'
 import { requireAuth } from '../../Auth'
 
-const routeName = '{{cookiecutter.route_name}}'
+const routeName = '{{cookiecutter.route_name|lower}}'
 
 export default (store) => ({
   path: routeName,

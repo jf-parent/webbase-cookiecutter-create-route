@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl'
 import ComponentStyle from './ComponentStyle.postcss'
 import BaseComponent from 'core/BaseComponent'
 
-class {{cookiecutter.route_name|title}} extends BaseComponent {
+class {{cookiecutter.route_name}} extends BaseComponent {
   constructor (props) {
     super(props)
 
@@ -20,4 +20,4 @@ class {{cookiecutter.route_name|title}} extends BaseComponent {
   }
 }
 
-module.exports = {{cookiecutter.route_name|title}}
+module.exports = {{cookiecutter.route_name}}
