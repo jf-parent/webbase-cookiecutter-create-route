@@ -4,9 +4,9 @@ import axios from 'axios'
 // Constants
 // ====================================
 
-export const DOING_SOMETHING = 'DOING_SOMETHING'
-export const DO_SOMETHING_SUCCESS = 'DO_SOMETHING_SUCCESS'
-export const DO_SOMETHING_ERROR = 'DO_SOMETHING_ERROR'
+export const LOADING = 'LOADING'
+export const LOADED_SUCCESS = 'LOADED_SUCCESS'
+export const LOADED_ERROR = 'LOADED_ERROR'
 
 // ====================================
 // Actions
@@ -15,37 +15,39 @@ export const DO_SOMETHING_ERROR = 'DO_SOMETHING_ERROR'
 const logger = require('loglevel').getLogger('{{cookiecutter.route_name}}')
 logger.setLevel(__LOGLEVEL__)
 
-export function doSomething (data) {
+export function doLoad (data) {
   return dispatch => {
-    dispatch({type: DOING_SOMETHING})
+    dispatch({type: LOADING})
 
     axios.post('/api/crud', data)
       .then((response) => {
         logger.debug('/api/crud (data) (response)', data, response)
 
         if (response.data.success) {
-          dispatch(doSomethingSuccess(response.data))
+          dispatch(loadedSuccess(response.data))
         } else {
-          dispatch(doSomethingError(response.error))
+          dispatch(loadedError(response.data.error))
         }
       })
   }
 }
 
-function doSomethingSuccess (data) {
+function loadedSuccess (data) {
   return {
-    type: DO_SOMETHING_SUCCESS
+    type: LOADED_SUCCESS,
+    data
   }
 }
 
-function doSomethingError (error) {
+function loadedError (error) {
   return {
-    type: DO_SOMETHING_ERROR
+    type: LOADED_ERROR,
+    error
   }
 }
 
 export const actions = {
-  doSomething
+  doLoad
 }
 
 // ====================================
@@ -53,14 +55,18 @@ export const actions = {
 // ====================================
 
 const initialState = {
+  error: null,
+  loading: false,
+  data: null
 }
 
-export default function dosomethingreducer (state = initialState, action) {
+export default function {{cookiecutter.route_name|lower}} (state = initialState, action) {
   switch (action.type) {
     case DOING_SOMETHING:
       return Object.assign({},
         initialState,
         {
+          loading: true
         }
       )
 
@@ -68,13 +74,15 @@ export default function dosomethingreducer (state = initialState, action) {
       return Object.assign({},
         initialState,
         {
+          data: action.data
         }
       )
 
-    case DO_SOMETHING_ERROR:
+    case LOADED_ERROR:
       return Object.assign({},
         initialState,
         {
+          error: action.error
         }
       )
 
@@ -82,4 +90,3 @@ export default function dosomethingreducer (state = initialState, action) {
       return state
   }
 }
-
