@@ -1,3 +1,3 @@
 {
-    "route_name (CamelCase)": "new_route"
+    "route_name": "CamelCase"
 }
