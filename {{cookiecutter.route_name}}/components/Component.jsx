@@ -26,13 +26,15 @@ class {{cookiecutter.route_name}} extends BaseComponent {
     let {{cookiecutter.route_name|lower}} = this.props.state.{{cookiecutter.route_name|lower}}
 
     if ({{cookiecutter.route_name|lower}}.error) {
-      return <ErrorMsg msgId={{{cookiecutter.route_name}}.error} />
+      return <ErrorMsg msgId={{"{"}}{{cookiecutter.route_name}}.error{{"}"}} />
     } else if ({{cookiecutter.route_name|lower}}.loading) {
+      {% raw %}
       return (
         <div className='container-fluid'>
           <Loading style={{left: '50%'}} />
         </div>
       )
+      {% endraw %}
     } else {
       return (
         <div>
