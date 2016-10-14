@@ -1,7 +1,7 @@
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
+// import { FormattedMessage } from 'react-intl'
 
-import ComponentStyle from './ComponentStyle.postcss'
+// import ComponentStyle from './ComponentStyle.postcss'
 import BaseComponent from 'core/BaseComponent'
 import Loading from 'components/ux/Loading'
 import ErrorMsg from 'components/ux/ErrorMsg'
@@ -28,13 +28,11 @@ class {{cookiecutter.route_name}} extends BaseComponent {
     if ({{cookiecutter.route_name|lower}}.error) {
       return <ErrorMsg msgId={{"{"}}{{cookiecutter.route_name}}.error{{"}"}} />
     } else if ({{cookiecutter.route_name|lower}}.loading) {
-      {% raw %}
-      return (
+      {% raw %}return (
         <div className='container-fluid'>
           <Loading style={{left: '50%'}} />
         </div>
-      )
-      {% endraw %}
+      ){% endraw %}
     } else {
       return (
         <div>

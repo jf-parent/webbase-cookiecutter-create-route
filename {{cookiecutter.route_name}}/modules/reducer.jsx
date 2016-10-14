@@ -62,7 +62,7 @@ const initialState = {
 
 export default function {{cookiecutter.route_name|lower}} (state = initialState, action) {
   switch (action.type) {
-    case DOING_SOMETHING:
+    case LOADING:
       return Object.assign({},
         initialState,
         {
@@ -70,7 +70,7 @@ export default function {{cookiecutter.route_name|lower}} (state = initialState,
         }
       )
 
-    case DO_SOMETHING_SUCCESS:
+    case LOADED_SUCCESS:
       return Object.assign({},
         initialState,
         {
