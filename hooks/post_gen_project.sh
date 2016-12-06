@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "Load the new route in client/routes/index.js"
+echo "Load the new route in client/routes/index.jsx"

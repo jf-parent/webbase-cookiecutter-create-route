@@ -11,7 +11,7 @@ class {{cookiecutter.route_name}} extends BaseComponent {
     super(props)
 
     this._initLogger()
-    this._bind('')
+    // this._bind('')
   }
 
   componentWillMount () {
@@ -26,7 +26,7 @@ class {{cookiecutter.route_name}} extends BaseComponent {
     let {{cookiecutter.route_name|lower}} = this.props.state.{{cookiecutter.route_name|lower}}
 
     if ({{cookiecutter.route_name|lower}}.error) {
-      return <ErrorMsg msgId={{"{"}}{{cookiecutter.route_name}}.error{{"}"}} />
+      return <ErrorMsg msgId={{"{"}}{{cookiecutter.route_name|lower}}.error{{"}"}} />
     } else if ({{cookiecutter.route_name|lower}}.loading) {
       {% raw %}return (
         <div className='container-fluid'>
