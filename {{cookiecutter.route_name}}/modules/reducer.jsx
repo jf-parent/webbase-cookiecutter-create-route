@@ -12,17 +12,12 @@ export const LOADED_ERROR = 'LOADED_ERROR'
 // Actions
 // ====================================
 
-const logger = require('loglevel').getLogger('{{cookiecutter.route_name}}')
-logger.setLevel(__LOGLEVEL__)
-
 export function doLoad (data) {
   return dispatch => {
     dispatch({type: LOADING})
 
     axios.post('/api/crud', data)
       .then((response) => {
-        logger.debug('/api/crud (data) (response)', data, response)
-
         if (response.data.success) {
           dispatch(loadedSuccess(response.data))
         } else {

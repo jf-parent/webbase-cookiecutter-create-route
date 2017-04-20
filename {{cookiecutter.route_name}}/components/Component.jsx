@@ -1,25 +1,15 @@
 import React from 'react'
 // import { FormattedMessage } from 'react-intl'
 
-// import ComponentStyle from './ComponentStyle.postcss'
 import BaseComponent from 'core/BaseComponent'
 import Loading from 'components/ux/Loading'
 import ErrorMsg from 'components/ux/ErrorMsg'
 
-class {{cookiecutter.route_name}} extends BaseComponent {
+export default class {{cookiecutter.route_name}} extends BaseComponent {
   constructor (props) {
     super(props)
 
-    this._initLogger()
     // this._bind('')
-  }
-
-  componentWillMount () {
-    this.debug('componentWillMount')
-  }
-
-  componentWillUnmount () {
-    this.debug('componentWillUnmount')
   }
 
   render () {
@@ -42,5 +32,3 @@ class {{cookiecutter.route_name}} extends BaseComponent {
     }
   }
 }
-
-module.exports = {{cookiecutter.route_name}}
